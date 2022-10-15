@@ -1,10 +1,11 @@
 <template>
 
   <div class="container">
-    <p>{{$store.state.moduleA.username}}</p>
-    <p>{{$store.getters.newName}}</p>
-    <p>{{$store.mutations.newName}}</p>
-
+  <div>{{store.state.moduleA.username}}</div>
+    <div>{{store.getters['moduleA/newName']}}</div>
+    <div>{{store.state.moduleB.age}}</div>
+  <div>{{store.getters['moduleC/fuck']}}</div>
+    <button @click="fn">123</button>
   </div>
 
 
@@ -14,7 +15,11 @@ import { useStore } from 'vuex'
 export default {
   name: 'App',
   setup () {
-
+    const store = useStore()
+    const fn = () => {
+      store.commit("moduleB/changeName")
+    }
+    return {store,fn}
   }
 }
 </script>
