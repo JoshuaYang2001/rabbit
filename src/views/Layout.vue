@@ -13,7 +13,7 @@
   <footer>
     <AppFooter/>
   </footer>
-  <router-view/>
+<!--  <router-view/>-->
 </template>
 
 <script>

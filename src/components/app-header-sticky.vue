@@ -1,6 +1,7 @@
 <template>
   <div class="app-header-sticky" :class="{show:y>=78}">
-    <div class="container">
+<!--    container一直存在只不过opacity为0,这样以来就会误触发产生鼠标离开区域依然显示弹出栏的bug,使用v-show:限制-->
+    <div class="container" v-show="y>=78">
       <RouterLink class="logo" to="/"/>
       <AppHeaderNav />
       <div class="right">
@@ -14,19 +15,13 @@
 <script>
 import AppHeaderNav from './app-header-nav'
 import {ref,onMounted} from "vue";
-
+import { useWindowScroll } from '@vueuse/core'
 export default {
   name: 'AppHeaderSticky',
   components: { AppHeaderNav },
   setup() {
-    const y = ref(0)
-    onMounted(() => {
-      window.onscroll = () => {
-        const srcollTop = document.documentElement.scrollTop
-        y.value = srcollTop
-        console.log(y)
-      }
-    })
+    const {y} = useWindowScroll()
+
     return {y}
   }
 }
