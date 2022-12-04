@@ -5,7 +5,12 @@ module.exports = defineConfig({
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',
-      patterns: []
+      patterns: [
+        // // eslint-disable-next-line no-undef
+        // path.join(__dirname, './src/assets/styles/variables.less'),
+        // // eslint-disable-next-line no-undef
+        // path.join(__dirname, './src/assets/styles/mixins.less')
+      ]
     }
   }
 })
